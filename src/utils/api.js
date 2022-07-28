@@ -63,6 +63,7 @@ export async function createObservation(observation, signal) {
 	observations.push(newObservation)
 	return newObservation
   */
+
 	// changing createObservation to connect to the API
 	const url = `${API_BASE_URL}/observations`
 	const options = {
@@ -75,5 +76,11 @@ export async function createObservation(observation, signal) {
 }
 
 export async function listObservations(signal) {
-	return []
+	// return []
+	const url = `${API_BASE_URL}/observations`
+	const options = {
+		headers,
+		signal,
+	}
+	return await fetchJson(url, options)
 }
