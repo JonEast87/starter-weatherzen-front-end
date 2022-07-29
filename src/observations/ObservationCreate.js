@@ -8,8 +8,8 @@ function ObservationCreate() {
 
 	const [observation, setObservation] = useState({
 		latitude: '',
-		longitde: '',
-		sky_conditions: '',
+		longitude: '',
+		sky_condition: '',
 	})
 
 	const [error, setError] = useState(null)
@@ -20,10 +20,6 @@ function ObservationCreate() {
 
 	function submitHandler(event) {
 		event.preventDefault()
-		// history.push('/')
-		// createObservation(observation).then(() => {
-		// 	history.push('/')
-		// })
 		createObservation(observation)
 			.then(() => {
 				history.push('/')
@@ -40,9 +36,6 @@ function ObservationCreate() {
 
 	return (
 		<main>
-			{/* <h1>Create Observation</h1>
-			<form onSubmit={submitHandler}>
-				<p>Later, input fields will be added here.</p> */}
 			<h1 className='mb-3'>Create Observation</h1>
 			<ErrorAlert error={error} />
 			<form onSubmit={submitHandler} className='mb-4'>
@@ -88,7 +81,7 @@ function ObservationCreate() {
 					</div>
 
 					<div className='mb-3'>
-						<label className='form-label' htmlFor='cloudOver'>
+						<label className='form-label' htmlFor='cloudCover'>
 							Sky Conditions
 						</label>
 						<select
@@ -98,27 +91,28 @@ function ObservationCreate() {
 							value={observation.sky_condition}
 							onChange={changeHandler}
 							required={true}>
-							<option value=''>Select a sky condition option</option>+{' '}
-							<option value='100'>Cloudless</option>+{' '}
-							<option value='101'>Some clouds</option>+{' '}
-							<option value='102'>Cloud covered</option>+{' '}
-							<option value='103'>Foggy</option>+{' '}
-							<option value='104'>Raining</option>+{' '}
-							<option value='106'>Snowing</option>+{' '}
-							<option value='108'>Hailing</option>+{' '}
+							<option value=''>Select a sky condition option</option>
+							<option value='100'>Cloudless</option>
+							<option value='101'>Some clouds</option>
+							<option value='102'>Cloud covered</option>
+							<option value='103'>Foggy</option>
+							<option value='104'>Raining</option>
+							<option value='106'>Snowing</option>
+							<option value='108'>Hailing</option>
 							<option value='109'>Thunderstorms</option>
 						</select>
 					</div>
-
-					<button
-						type='button'
-						className='btn btn-secondary mr-2'
-						onClick={cancelHandler}>
-						Cancel
-					</button>
-					<button type='submit' className='btn btn-primary'>
-						Submit
-					</button>
+					<div>
+						<button
+							type='button'
+							className='btn btn-secondary mr-2'
+							onClick={cancelHandler}>
+							Cancel
+						</button>
+						<button type='submit' className='btn btn-primary'>
+							Submit
+						</button>
+					</div>
 				</div>
 			</form>
 		</main>
